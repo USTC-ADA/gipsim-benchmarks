@@ -1,0 +1,3 @@
+cd /home/gipsim/parsec/parsec-benchmark/pkgs/apps/x264/run
+
+../inst/amd64-linux.gcc/bin/x264 --quiet --qp 20 --partitions b8x8,i4x4 --ref 5 --direct auto --b-pyramid --weightb --mixed-refs --no-fast-pskip --me umh --subme 7 --analyse b8x8,i4x4 --threads $1 -o eledream.264 eledream_64x36_3.y4m

@@ -1,4 +1,6 @@
-benchmarks
+benchmarks/npb/NPB3.3.1
+benchmarks/parsec/parsec*
+benchmarks/spec/CPU-2017.tar.gz
 
 disk-image
 

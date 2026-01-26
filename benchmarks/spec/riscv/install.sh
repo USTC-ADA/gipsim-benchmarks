@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Installing SPEC CPU 2017 benchmark for riscv64."
 
-tar -xzvf /home/gipsim/spec/CPU-2017.tar.gz -C /home/gipsim/spec
+tar -xzf /home/gipsim/spec/CPU-2017.tar.gz -C /home/gipsim/spec
 
 cd /home/gipsim/spec/CPU-2017
 ./install.sh -u linux-riscv64 -f

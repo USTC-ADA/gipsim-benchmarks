@@ -1,9 +1,9 @@
 echo "Installing PARSEC benchmark for x86."
 
 cd /home/gipsim/parsec
-tar -xvzf parsec-3.0-core.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
-tar -xvzf parsec-3.0-input-sim.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
-tar -xvzf parsec-3.0-input-native.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
+tar -xzf parsec-3.0-core.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
+tar -xzf parsec-3.0-input-sim.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
+tar -xzf parsec-3.0-input-native.tar.gz -C ./parsec-benchmark --strip-components=1 --skip-old-files
 
 rm parsec-3.0-core.tar.gz parsec-3.0-input-sim.tar.gz parsec-3.0-input-native.tar.gz
 

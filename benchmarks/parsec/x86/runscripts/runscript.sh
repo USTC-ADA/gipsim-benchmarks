@@ -23,8 +23,8 @@ cd $base_dir/inputs
 
 tar -xvf input_$size.tar -C $base_dir/run
 
-m5 workbegin
+m5 --inst workbegin
 
 /home/gem5/runscripts/$size/$workload.sh $num_threads
 
-m5 workend
+m5 --inst workend

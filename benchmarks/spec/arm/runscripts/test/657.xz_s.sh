@@ -6,7 +6,7 @@ echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
 
 BASE_DIR=/home/gipsim/spec/CPU-2017/benchspec/CPU/657.xz_s/run
 
-m5 workbegin
+m5 --inst workbegin
 
 cd $BASE_DIR/run_base_test_mytest-64.0000
 ./xz_s_base.mytest-64 cpu2006docs.tar.xz 4 055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae 1548636 1555348 0
@@ -22,4 +22,4 @@ cd $BASE_DIR/run_base_test_mytest-64.0000
 ./xz_s_base.mytest-64 cpu2006docs.tar.xz 1 055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae 631912 -1 4
 ./xz_s_base.mytest-64 cpu2006docs.tar.xz 1 055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae 629064 -1 4e
 
-m5 workend
+m5 --inst workend

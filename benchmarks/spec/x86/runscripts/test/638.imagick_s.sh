@@ -6,9 +6,9 @@ echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
 
 BASE_DIR=/home/gipsim/spec/CPU-2017/benchspec/CPU/638.imagick_s/run
 
-m5 workbegin
+m5 --inst workbegin
 
 cd $BASE_DIR/run_base_test_mytest-m64.0000
 ./imagick_s_base.mytest-m64 -limit disk 0 test_input.tga -shear 25 -resize 640x480 -negate -alpha Off test_output.tga
 
-m5 workend
+m5 --inst workend

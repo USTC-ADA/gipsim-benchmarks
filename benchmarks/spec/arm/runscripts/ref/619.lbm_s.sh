@@ -6,9 +6,9 @@ echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
 
 BASE_DIR=/home/gipsim/spec/CPU-2017/benchspec/CPU/619.lbm_s/run
 
-m5 workbegin
+m5 --inst workbegin
 
 cd $BASE_DIR/run_base_refspeed_mytest-64.0000
 ./lbm_s_base.mytest-64 2000 reference.dat 0 0 200_200_260_ldc.of
 
-m5 workend
+m5 --inst workend

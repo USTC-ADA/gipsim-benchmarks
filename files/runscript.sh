@@ -136,17 +136,17 @@ case "$benchmark" in
         cd "$base_dir/inputs"
         tar -xvf "input_$size.tar" -C "$base_dir/run"
 
-        m5 workbegin
+        m5 --inst workbegin
         bash "/home/gipsim/parsec/$arch/runscripts/$size/$workload.sh" "$scale"
-        m5 workend
+        m5 --inst workend
         ;;
 
     npb)
         export OMP_NUM_THREADS="$scale"
         echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
-        m5 workbegin
+        m5 --inst workbegin
         /home/gipsim/npb/NPB3.3.1/NPB3.3-OMP/bin/"$workload"."$size".x
-        m5 workend
+        m5 --inst workend
         ;;
 esac
 

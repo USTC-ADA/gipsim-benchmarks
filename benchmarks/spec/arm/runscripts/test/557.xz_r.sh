@@ -12,7 +12,7 @@ for ((i = 1; i < $1; i++)); do
           $BASE_DIR/run_base_test_mytest-64.$extend_i
 done
 
-m5 workbegin
+m5 --inst workbegin
 
 for ((i = 0; i < $1; i++)); do
     extend_i=$(printf "%04d" $i)
@@ -54,4 +54,4 @@ done
 
 wait
 
-m5 workend
+m5 --inst workend

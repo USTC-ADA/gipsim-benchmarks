@@ -6,9 +6,9 @@ echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
 
 BASE_DIR=/home/gipsim/spec/CPU-2017/benchspec/CPU/649.fotonik3d_s/run
 
-m5 workbegin
+m5 --inst workbegin
 
 cd $BASE_DIR/run_base_refspeed_mytest-64.0000
 ./fotonik3d_s_base.mytest-64
 
-m5 workend
+m5 --inst workend

@@ -4,6 +4,9 @@ echo "This is a script for 549.fotonik3d_r.test with $1 copies (parallel executi
 export OMP_NUM_THREADS=1
 echo "[INFO] Set OMP_NUM_THREADS = $OMP_NUM_THREADS"
 
+export OMP_THREAD_LIMIT=1
+echo "[INFO] Set OMP_THREAD_LIMIT = $OMP_THREAD_LIMIT"
+
 BASE_DIR=/home/gipsim/spec/CPU-2017/benchspec/CPU/549.fotonik3d_r/run
 
 for ((i = 1; i < $1; i++)); do

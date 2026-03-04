@@ -22,6 +22,11 @@ variable "ssh_username" {
   default = "gipsim"
 }
 
+variable "qemu_binary_path" {
+  type    = string
+  default = "/usr/bin/qemu-system-riscv64"
+}
+
 locals {
   iso_data = {
     # https://old-releases.ubuntu.com/releases/22.04.1/ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img.xz
@@ -56,7 +61,7 @@ source "qemu" "initialize" {
   iso_urls         = [local.iso_data.iso_url]
   memory           = "8192"
   output_directory = local.disk_image_path
-  qemu_binary      = "/usr/bin/qemu-system-riscv64"
+  qemu_binary      = "${var.qemu_binary_path}"
 
   qemuargs       = [  ["-bios", "/usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf"],
                       ["-machine", "virt"],

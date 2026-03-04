@@ -22,6 +22,11 @@ variable "ssh_username" {
   default = "gipsim"
 }
 
+variable "qemu_binary_path" {
+  type    = string
+  default = "/usr/bin/qemu-system-x86_64"
+}
+
 locals {
   iso_data = {
     iso_url       = "http://old-releases.ubuntu.com/releases/18.04.0/ubuntu-18.04-server-amd64.iso"
@@ -60,7 +65,7 @@ source "qemu" "initialize" {
   iso_target_path  = local.iso_data.iso_path
   memory           = "8192"
   output_directory = local.disk_image_path
-  qemu_binary      = "/usr/bin/qemu-system-x86_64"
+  qemu_binary      = "${var.qemu_binary_path}"
   qemuargs         = [["-cpu", "host"], ["-display", "none"]]
   shutdown_command = "echo '${var.ssh_password}'|sudo -S shutdown -P now"
   ssh_password     = "${var.ssh_password}"

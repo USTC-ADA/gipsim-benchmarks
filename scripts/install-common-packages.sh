@@ -53,7 +53,7 @@ build_m5_utility() {
     mkdir -p "$WORK_DIR"
     cd "$WORK_DIR"
 
-    git clone https://gh-proxy.org/https://github.com/gem5/gem5.git --depth=1 --single-branch --branch=stable
+    git clone https://github.com/gem5/gem5.git --depth=1 --single-branch --branch=stable
 
     pushd gem5
     cp -r include/gem5 /usr/local/include/

@@ -131,6 +131,19 @@ build {
 
   provisioner "shell" {
     execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+    scripts         = ["scripts/clean-up-swap.sh"]
+    expect_disconnect = true
+  }
+
+  provisioner "shell" {
+    execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+    scripts         = ["scripts/disable-services.sh"]
+    environment_vars = ["ISA=x86"]
+    expect_disconnect = true
+  }
+
+  provisioner "shell" {
+    execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
     scripts         = ["scripts/install-common-packages.sh"]
     environment_vars = ["ISA=x86"]
     expect_disconnect = true

@@ -63,12 +63,14 @@ source "qemu" "initialize" {
   output_directory = local.disk_image_path
   qemu_binary      = "${var.qemu_binary_path}"
 
+  # * [WARNING] : Careful with the version of u-boot-qemu (version < 2025.10, issue : https://lists.denx.de/pipermail/u-boot/2025-August/596527.html)
   qemuargs       = [  ["-bios", "/usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf"],
                       ["-machine", "virt"],
-                      ["-kernel","/usr/lib/u-boot/qemu-riscv64_smode/uboot.elf"],
+                      ["-kernel", "/usr/lib/u-boot/qemu-riscv64_smode/uboot.elf"],
                       ["-device", "virtio-vga"],
                       ["-device", "qemu-xhci"],
-                      ["-device", "usb-kbd"]
+                      ["-device", "usb-kbd"],
+                      ["-serial", "file:serial.log"],
                   ]
   shutdown_command = "echo '${var.ssh_password}'|sudo -S shutdown -P now"
   ssh_password     = "${var.ssh_password}"
@@ -124,6 +126,19 @@ build {
 
   provisioner "shell" {
     execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+    scripts         = ["scripts/clean-up-swap.sh"]
+    expect_disconnect = true
+  }
+
+  provisioner "shell" {
+    execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+    scripts         = ["scripts/disable-services.sh"]
+    environment_vars = ["ISA=riscv"]
+    expect_disconnect = true
+  }
+
+  provisioner "shell" {
+    execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
     scripts         = ["scripts/install-common-packages.sh"]
     environment_vars = ["ISA=riscv"]
     expect_disconnect = true
@@ -131,7 +146,10 @@ build {
 
   provisioner "shell" {
     execute_command = "echo '${var.ssh_password}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
-    scripts         = ["benchmarks/spec/riscv/install.sh"]
+    scripts         = [
+                        "benchmarks/spec/riscv/install.sh",
+                        "benchmarks/npb/riscv/install.sh",
+                      ]
     expect_disconnect = true
   }
 }
